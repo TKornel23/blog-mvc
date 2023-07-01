@@ -22,6 +22,8 @@ public class AdminController : Controller
     {
         var user = await this._userManager.GetUserAsync(this.User);
 
+        await this._userManager.AddToRoleAsync(user, "Admin");
+
         var blogs = this._unitOfWork.BlogRepository
             .Get(filter: x => x.OwnerId == user.Id, orderBy: o => o.OrderBy(x => x.Created));
 

@@ -11,7 +11,7 @@ public class SuperAdminController : Controller
         _userManager = userManager;
     }
 
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "Admin")]
     public IActionResult Index()
     {
         var blogs = this._unitOfWork.BlogRepository

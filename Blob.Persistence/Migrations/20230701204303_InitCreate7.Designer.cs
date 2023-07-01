@@ -4,6 +4,7 @@ using Blog.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Persistence.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    partial class BlogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230701204303_InitCreate7")]
+    partial class InitCreate7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -324,13 +326,13 @@ namespace Blog.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "b5b2c708-e3a9-45cd-b311-f5ba357f6ffa",
-                            RoleId = "2"
+                            UserId = "13fbbf8b-4aa4-4bd4-8fab-1ab24edcd62b",
+                            RoleId = "1"
                         },
                         new
                         {
-                            UserId = "ef4b23a2-1647-49ec-8375-cd174cef0d4a",
-                            RoleId = "1"
+                            UserId = "4b82ab52-2048-4adb-86b6-b8b495ec2394",
+                            RoleId = "2"
                         });
                 });
 
@@ -380,16 +382,16 @@ namespace Blog.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b5b2c708-e3a9-45cd-b311-f5ba357f6ffa",
+                            Id = "13fbbf8b-4aa4-4bd4-8fab-1ab24edcd62b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "14722dac-2001-4780-a9dd-1c5e23902391",
+                            ConcurrencyStamp = "f82626e2-9ea5-40eb-b8a4-d8bcfa687da5",
                             Email = "tkornel23@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "TKORNEL23@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFK6gaiX3FGidBBCU05FkAEks/uH+li1+UxDhuCFk1ucKoIeynnBEHf9htjkeVKPDg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENQT8NFZXqqR7TrspxjfNBz6kjqZzG2E5ujgWcl3Poz4TYQTr1SGrnNeKVfuHMpq4g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f70b0349-d9f8-4590-96e6-e2c397bcd8f4",
+                            SecurityStamp = "9d2b8d03-8719-45cb-ad84-cc2b61be2abe",
                             TwoFactorEnabled = false,
                             UserName = "tkornel23@gmail.com",
                             FirstName = "Toth",
@@ -397,16 +399,16 @@ namespace Blog.Persistence.Migrations
                         },
                         new
                         {
-                            Id = "ef4b23a2-1647-49ec-8375-cd174cef0d4a",
+                            Id = "4b82ab52-2048-4adb-86b6-b8b495ec2394",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "69297364-af82-4545-9304-0faa79da2b3d",
+                            ConcurrencyStamp = "216ef246-b080-4afb-9d29-b3fec417cb98",
                             Email = "ttoraxon@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "TTORAXON@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOLV5VCckJJ669wP4uwTSFwqExVDh14BezxOm2LO69Aa2+CrK4n/cz9UjN5uT+8IaQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELlCnN4ZHPnQORagUwX5uvqKUUZXusYSuqEbYDnPIt7bp/r8VXPlMbTs/w7GIO7aow==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d12fae50-e5a1-4b6d-85b5-a9a9d0af04c0",
+                            SecurityStamp = "61dc3bbe-3406-45a4-b0c5-075b09debaa7",
                             TwoFactorEnabled = false,
                             UserName = "ttoraxon@gmail.com",
                             FirstName = "Toth",

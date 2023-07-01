@@ -46,13 +46,13 @@ public class BlogDbContext : IdentityDbContext
 
 		var admin = new IdentityUserRole<string>
 		{
-			RoleId = "1",
+			RoleId = "2",
 			UserId = tkor.Id
 		};
 
         var user = new IdentityUserRole<string>
         {
-            RoleId = "2",
+            RoleId = "1",
             UserId = ttor.Id
         };
 
