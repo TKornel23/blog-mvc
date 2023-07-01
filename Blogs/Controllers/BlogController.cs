@@ -1,7 +1,4 @@
-﻿using Castle.Core.Logging;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-
-namespace Blogs;
+﻿namespace Blogs;
 
 public class BlogController : Controller
 {
@@ -19,6 +16,7 @@ public class BlogController : Controller
         this.blogService = blogService;
     }
 
+    [Authorize]
     public IActionResult Index()
     {
         var blogs = this.blogService.GetBlogsForMainPage();
@@ -52,14 +50,23 @@ public class BlogController : Controller
     }
 
     [Authorize]
-    [HttpPut]
-    public IActionResult UpdateBlog(Blog.Persistence.Blog blogToUpdate)
+    [HttpGet]
+    public IActionResult UpdateBlog([FromQuery] string blogId)
+    {
+        var blogToUpdate = this._unitOfWork.BlogRepository.GetByID(blogId);
+
+        return View("Update", blogToUpdate);
+    }
+
+    [Authorize]
+    [HttpPost]
+    public IActionResult Update(Blog.Persistence.Blog blogToUpdate)
     {
         this._unitOfWork.BlogRepository.Update(blogToUpdate);
 
         this._unitOfWork.Save();
 
-        return Ok();
+        return RedirectToAction("Index", "admin");
     }
 
     [Authorize]
@@ -76,6 +83,7 @@ public class BlogController : Controller
         return View("OneBlog", blog);
     }
 
+    [Authorize]
     [HttpPost("Blog/CreateAsync")]
     public async Task<IActionResult> CreateAsync(Blog.Persistence.Blog blog)
     {
@@ -91,6 +99,7 @@ public class BlogController : Controller
         return RedirectToAction("Index");
     }
 
+    [Authorize]
     [HttpGet("Like/{blogId}")]
     public IActionResult Like(string blogId)
     {
@@ -105,6 +114,7 @@ public class BlogController : Controller
         return View("OneBlog", blog);
     }
 
+    [Authorize]
     [HttpGet("Dislike/{blogId}")]
     public IActionResult Dislike(string blogId)
     {

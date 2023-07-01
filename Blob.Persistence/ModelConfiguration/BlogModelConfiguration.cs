@@ -9,11 +9,11 @@ internal class BlogModelConfiguration : IEntityTypeConfiguration<Blog>
         builder.HasMany(x =>x.Comments)
             .WithOne(x => x.Blog)
             .HasForeignKey(x =>x.BlogId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(x => x.Tags)
             .WithOne(x => x.Blog)
             .HasForeignKey(x => x.BlogId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
