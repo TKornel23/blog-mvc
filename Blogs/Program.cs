@@ -1,3 +1,5 @@
+using Blogs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -30,6 +32,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<GenericRepository<Tag>>();
 builder.Services.AddScoped<GenericRepository<Comment>>();
 builder.Services.AddScoped<GenericRepository<Blog.Persistence.Blog>>();
+builder.Services.AddScoped<IBlogService, BlogService>();
 
 var app = builder.Build();
 
@@ -55,7 +58,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Blog}/{action=Index}/{id?}");
 app.MapRazorPages();
 
 app.Run();

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Blog.Persistence.Blog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="align-content-center">
+    @Html.Partial("BlogCreatePartial", new Blog.Persistence.Blog())
+
+    <div class="overflow-auto">
+        @foreach (var blog in Model)
+        {
+            <h3>@blog.Title</h3>
+            <p>@blog.BlogText</p>
+            <span>@blog.Created</span>
+            <span>@blog.Likes</span>
+            foreach (var tag in blog.Tags)
+            {
+                <p>@tag.Title</p>
+            }
+            foreach (var comment in blog.Comments)
+            {
+                <span>@comment.Owner.Email</span>
+                <p>@comment.CommentSection</p>
+            }
+        }
+    </div>
+</div>
+
+

@@ -10,6 +10,7 @@ public class Blog : Entity
     public virtual ICollection<Tag>? Tags { get; set; }
     [NotNull]
     public string OwnerId { get; set; } = null!;
-    [MaxLength(254)]
+    [MinLength(2)]
     public string BlogText { get; set; } = null!;
+    public int Likes { get; set; }
 }

@@ -4,18 +4,23 @@ public class BlogController : Controller
 {
     private readonly UserManager<SiteUser> _userManager;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IBlogService blogService;
 
     public BlogController(
         UserManager<SiteUser> userManager,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IBlogService blogService)
     {
         this._userManager = userManager;
         _unitOfWork = unitOfWork;
+        this.blogService = blogService;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var blogs = this.blogService.GetBlogsForMainPage();
+
+        return View(blogs);
     }
 
     [Authorize]
@@ -43,17 +48,17 @@ public class BlogController : Controller
 
     [Authorize]
     [HttpPut]
-    public IActionResult UpdateBlog(string blogToUpdate)
+    public IActionResult UpdateBlog(Blog.Persistence.Blog blogToUpdate)
     {
-        var blog = this._unitOfWork.BlogRepository.GetByID(blogToUpdate);
-
-        this._unitOfWork.BlogRepository.Update(blog);
+        this._unitOfWork.BlogRepository.Update(blogToUpdate);
 
         this._unitOfWork.Save();
 
         return Ok();
     }
 
+    [Authorize]
+    [HttpGet]
     public IActionResult GetOne(string blogId)
     {
         var blog = this._unitOfWork.BlogRepository.GetByID(blogId);
@@ -63,6 +68,21 @@ public class BlogController : Controller
             return BadRequest();
         }
 
-        return Ok(blog);
+        return View(blog);
+    }
+
+    [HttpPost("Blog/CreateAsync")]
+    public async Task<IActionResult> CreateAsync(Blog.Persistence.Blog blog)
+    {
+        var user = await this._userManager.GetUserAsync(this.User);
+
+        blog.OwnerId = user.Id;
+        blog.Owner = user;
+
+        this._unitOfWork.BlogRepository.Insert(blog);
+
+        this._unitOfWork.Save();
+
+        return RedirectToAction("Index");
     }
 }

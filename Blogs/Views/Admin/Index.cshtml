@@ -4,24 +4,114 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="text-red">Index</h1>
+<h1 class="mb-5">Admin Dashboard</h1>
 
-<p class="text-red-400">
-    <a asp-action="Create">Create New</a>
-</p>
+@if(Model.Blogs.Any())
+{
 <table class="table">
     <thead>
         <tr>
-            <th></th>
+            <th>Title</th>
+            <th>Number of Comments</th>
+            <th>Number of Tags</th>
+            <th>Number of Likes</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Comments) {
-        <tr>
-            <td>
-               asd
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Blogs)
+        {
+            <tr>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Comments.Count()
+                </td>
+                <td>
+                    @item.Tags.Count()
+                </td>
+                <td>
+                    @item.Likes
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteBlog", "Blog", new { blogId = item.Id } )
+                    @Html.ActionLink("Update", "Blog", "GetOne", new { blogId = item.Id } )
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+}
+else
+{
+    <h3 class="text-center mb-5">Looks like you have no written blog yet, head to the Home page <br> and write your first one.</h3>
+}
+
+
+@if(Model.Comments.Any())
+{
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Creation Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Comments)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Created
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Comment", "DeleteComment", new { commentId = item.Id } )
+                    @Html.ActionLink("Update", "Comment", "GetOne", new { commentId = item.Id } )
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <h3 class="text-center mb-5">Looks like you have no written comment yet, find a blog <br> and share your toughts about that.</h3>
+}
+
+@if (Model.Tags.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Creation Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Tags)
+            {
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+                    <td>
+                        @item.Created
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Tag", "DeleteTag", new { tagtId = item.Id } )
+                        @Html.ActionLink("Update", "Tag", "GetOne", new { tagtId = item.Id } )
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else{
+    <h3 class="text-center mb-3">Looks like you have no created tags yet.</h3>
+}
