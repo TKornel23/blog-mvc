@@ -13,7 +13,7 @@ public class GenericRepository<TEntity> where TEntity : class
 
     public virtual IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "")
     {
         IQueryable<TEntity> query = dbSet;
@@ -39,7 +39,7 @@ public class GenericRepository<TEntity> where TEntity : class
         }
     }
 
-    public virtual TEntity GetByID(object id)
+    public virtual TEntity? GetByID(object id)
     {
         return dbSet.Find(id);
     }
@@ -51,8 +51,14 @@ public class GenericRepository<TEntity> where TEntity : class
 
     public virtual void Delete(object id)
     {
-        TEntity entityToDelete = dbSet.Find(id);
-        Delete(entityToDelete);
+        TEntity? entityToDelete = dbSet.Find(id);
+
+        if(entityToDelete is null)
+        {
+            return;
+        }
+
+        Delete(entityToDelete!);
     }
 
     public virtual void Delete(TEntity entityToDelete)
