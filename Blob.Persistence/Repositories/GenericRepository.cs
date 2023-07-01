@@ -1,4 +1,4 @@
-﻿namespace Blob.Persistence;
+﻿namespace Blog.Persistence;
 
 public class GenericRepository<TEntity> where TEntity : class
 {
@@ -12,7 +12,7 @@ public class GenericRepository<TEntity> where TEntity : class
     }
 
     public virtual IEnumerable<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
+            Expression<Func<TEntity, bool>>? filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
             string includeProperties = "")
     {

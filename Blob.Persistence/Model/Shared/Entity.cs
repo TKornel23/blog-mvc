@@ -1,4 +1,4 @@
-﻿namespace Blob.Persistence;
+﻿namespace Blog.Persistence;
 
 public class Entity
 {

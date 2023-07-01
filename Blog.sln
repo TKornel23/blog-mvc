@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog", "Blog\Blog.csproj", "{DA2D33E1-47CE-437A-9E8F-1AF41B359802}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blob.Persistence", "Blob.Persistence\Blob.Persistence.csproj", "{6FF73BAF-2034-4232-8C70-B4A97775129D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Persistence", "Blob.Persistence\Blog.Persistence.csproj", "{6FF73BAF-2034-4232-8C70-B4A97775129D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
