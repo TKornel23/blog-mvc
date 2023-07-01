@@ -26,4 +26,8 @@
     <ProjectReference Include="..\Blog.Application\Blogs.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Comment\" />
+  </ItemGroup>
+
 </Project>

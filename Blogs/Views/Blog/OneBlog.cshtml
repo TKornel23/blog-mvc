@@ -1,38 +1,79 @@
 ﻿@model Blog.Persistence.Blog
+@inject UserManager<SiteUser> _userManager
 
 <h1>@Model.Title</h1>
 
 <div>
     <hr />
     <dl class="row">              
-        <dt>
-            @Html.DisplayNameFor(model => model.BlogText)
-        </dt>
         <dd>
             @Html.DisplayFor(model => model.BlogText)
         </dd>
         <div class="d-flex flex-row justify-content-lg-start">
-            <dt>
-                @Html.DisplayNameFor(model => model.Likes)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Likes)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Created)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Created)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Owner)
-            </dt>
-            <dd">
-                @Html.DisplayFor(model => model.Owner.Email)
-            </dd>
+            <div class="d-flex flex-row m-2">
+                <dt class ="m-1">
+                    @Html.DisplayNameFor(model => model.Likes)
+                </dt class="m-1">
+                <dd class="m-1">
+                    @Html.DisplayFor(model => model.Likes)
+                </dd>
+            </div> 
+            <div class ="d-flex flex-row m-2">
+                <dt class="m-1">
+                    @Html.DisplayNameFor(model => model.Created)
+                </dt>
+                <dd class="m-1">
+                    @Html.DisplayFor(model => model.Created)
+                </dd>
+            </div>
+            <div class="d-flex flex-row m-2">
+                <dt class="m-1">
+                    @Html.DisplayNameFor(model => model.Owner)
+                </dt>
+                <dd class="m-1">
+                    @Html.DisplayFor(model => model.Owner.Email)
+                </dd>
+            </div>
+            <div class="d-flex flex-row m-2">
+                <dt class="m-1">
+                    @Html.ActionLink("+", "Like", "Blog", new { blogId = Model.Id })
+                </dt>
+                <dd class="m-1">
+                    @Html.ActionLink("-", "Dislike", "Blog", new { blogId = Model.Id })
+                </dd>
+            </div>
         </div>       
+    </dl>
+    <dl>
+
+        @if(Model.Tags is null)
+        {
+            @foreach (var item in Model.Tags)
+            {
+                <div class="d-flex flex-row justify-content-lg-start">
+                    <p class="m-1 border-1 border border-secondary bg-light">@item.Title</p>
+                </div>
+            }
+        }
+    </dl>
+    @Html.Partial("CommentCreatePartial", new Blog.Persistence.Comment() { Blog = Model, BlogId = Model.Id, Owner = await this._userManager.GetUserAsync(this.User) })
+    <dl class="m-4">
+        @foreach (var item in Model.Comments)
+        {
+            <div class="d-flex flex-row justify-content-lg-start">
+                <p class="m-1">@item.Owner.Email</p>
+                <span class="m-1">@item.Created</span>
+                @if(item.Owner == await this._userManager.GetUserAsync(this.User))
+                {
+                    @Html.ActionLink("Delete", "DeleteComment", "Comment", new { commentId = item.Id } )
+                }
+            </div>
+            <p>
+                @item.CommentSection
+            </p>
+        }
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to blogs</a>
 </div>

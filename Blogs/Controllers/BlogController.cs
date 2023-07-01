@@ -1,4 +1,7 @@
-﻿namespace Blogs;
+﻿using Castle.Core.Logging;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+namespace Blogs;
 
 public class BlogController : Controller
 {
@@ -86,5 +89,36 @@ public class BlogController : Controller
         this._unitOfWork.Save();
 
         return RedirectToAction("Index");
+    }
+
+    [HttpGet("Like/{blogId}")]
+    public IActionResult Like(string blogId)
+    {
+        var blog = this._unitOfWork.BlogRepository.GetByID(blogId);
+
+        blog.Likes = blog.Likes + 1;
+        blog.Modified = DateTime.Now;
+        _unitOfWork.BlogRepository.Update(blog);
+
+        _unitOfWork.Save();
+
+        return View("OneBlog", blog);
+    }
+
+    [HttpGet("Dislike/{blogId}")]
+    public IActionResult Dislike(string blogId)
+    {
+        var blog = this._unitOfWork.BlogRepository.GetByID(blogId);
+
+        if(blog.Likes > 0)
+        {
+            blog.Likes = blog.Likes - 1;
+            blog.Modified = DateTime.Now;
+            _unitOfWork.BlogRepository.Update(blog);
+
+            _unitOfWork.Save();
+        }
+
+        return View("OneBlog", blog);
     }
 }
