@@ -2,10 +2,15 @@
 
 public class UnitOfWork : IDisposable, IUnitOfWork
 {
-    private BlogDbContext context = new BlogDbContext();
+    private BlogDbContext context;
     private GenericRepository<Blog>? blogRepository;
     private GenericRepository<Comment>? commentRepository;
     private GenericRepository<Tag>? tagRepository;
+
+    public UnitOfWork(BlogDbContext context)
+    {
+        this.context = context;
+    }
 
     public GenericRepository<Tag> TagRepository
     {

@@ -2,8 +2,12 @@
 
 public class Tag : Entity
 {
+    [MaxLength(50)]
     public string Title { get; set; } = null!;
-    public Blog Blog { get; set; } = null!;
-    public Guid BlogId { get; set; }
-    public SiteUser Owner { get; set; } = null!;
+    public virtual Blog? Blog { get; set; }
+    [NotNull]
+    public string? BlogId { get; set; }
+    public virtual SiteUser Owner { get; set; } = null!;
+    [NotNull]
+    public string OwnerId { get; set; } = null!;
 }

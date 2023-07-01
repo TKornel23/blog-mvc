@@ -1,0 +1,27 @@
+﻿@model Blogs.AdminViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-red">Index</h1>
+
+<p class="text-red-400">
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Comments) {
+        <tr>
+            <td>
+               asd
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

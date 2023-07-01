@@ -3,3 +3,7 @@ global using Microsoft.EntityFrameworkCore;
 global using System.Linq.Expressions;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using System.Reflection;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using System.Diagnostics.CodeAnalysis;

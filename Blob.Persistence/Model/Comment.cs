@@ -2,9 +2,12 @@
 
 public class Comment : Entity
 {
+    [MaxLength(254)]
     public string CommentSection { get; set; } = null!;
-    public Blog Blog { get; set; } = null!;
-    public SiteUser Owner { get; set; } = null!;
-    public ICollection<Comment>? Answers { get; set; }
-    public Guid BlogId { get; set; }
+    public virtual Blog Blog { get; set; } = null!;
+    public virtual SiteUser Owner { get; set; } = null!;
+    [NotNull]
+    public string BlogId { get; set; } = null!;
+    [NotNull]
+    public string OwnerId { get; set; } = null!;
 }
