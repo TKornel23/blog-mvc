@@ -1,18 +1,22 @@
 ﻿@model IEnumerable<Blog.Persistence.Blog>
 
-@{
-    ViewData["Title"] = "Index";
-}
 <div class="align-content-center">
-    @Html.Partial("BlogCreatePartial", new Blog.Persistence.Blog())
+@Html.Partial("BlogCreatePartial", new Blog.Persistence.Blog())
 
-    <div class="overflow-auto">
+    <div class="mt-5">
         @foreach (var blog in Model)
         {
-            <h3>@blog.Title</h3>
-            <p>@blog.BlogText</p>
-            <span>@blog.Created</span>
-            <span>@blog.Likes</span>
+            <a asp-action="GetOne" asp-controller="Blog" asp-route-blogId="@blog.Id" class="text-decoration-none text-black">
+                <div class="blog-item">
+                    <h3>@blog.Title</h3>
+                    <p>@blog.BlogText</p>
+                    <div class="d-flex flex-row justify-content-around">
+                        <div class="d-flex flex-row"><p class="m-1">Created on </p> <span class="m-1"> @blog.Created</span></div>
+                        <div class="d-flex flex-row"><p class="m-1">Likes: </p> <span class="m-1"> @blog.Likes</span></div>
+                        <div class="d-flex flex-row"><p class="m-1">Creator: </p> <span class="m-1"> @blog.Owner.Email</span></div>
+                    </div>
+                </div>
+            </a>
             foreach (var tag in blog.Tags)
             {
                 <p>@tag.Title</p>
@@ -25,5 +29,3 @@
         }
     </div>
 </div>
-
-

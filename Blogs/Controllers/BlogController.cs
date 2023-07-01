@@ -24,7 +24,7 @@ public class BlogController : Controller
     }
 
     [Authorize]
-    [HttpDelete]
+    [HttpGet]
     public IActionResult DeleteBlog(string blogId)
     {
         try
@@ -38,7 +38,9 @@ public class BlogController : Controller
 
             this._unitOfWork.BlogRepository.Delete(blog!);
 
-            return Ok();
+            this._unitOfWork.Save();
+
+            return RedirectToAction("Index", "Admin");
         }
         catch
         {
@@ -58,7 +60,7 @@ public class BlogController : Controller
     }
 
     [Authorize]
-    [HttpGet]
+    [HttpGet("GetOne/{blogId}")]
     public IActionResult GetOne(string blogId)
     {
         var blog = this._unitOfWork.BlogRepository.GetByID(blogId);
@@ -68,7 +70,7 @@ public class BlogController : Controller
             return BadRequest();
         }
 
-        return View(blog);
+        return View("OneBlog", blog);
     }
 
     [HttpPost("Blog/CreateAsync")]
