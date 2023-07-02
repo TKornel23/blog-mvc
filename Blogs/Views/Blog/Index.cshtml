@@ -9,7 +9,7 @@
             <a asp-action="GetOne" asp-controller="Blog" asp-route-blogId="@blog.Id" class="text-decoration-none text-black">
                 <div class="blog-item">
                     <h3>@blog.Title</h3>
-                    <p>@blog.BlogText</p>
+                    <p class="w-75">@blog.BlogText</p>
                     <div class="d-flex flex-row justify-content-around">
                         <div class="d-flex flex-row"><p class="m-1">Creator: </p> <span class="m-1"> @blog.Owner.Email</span></div>
                     </div>
