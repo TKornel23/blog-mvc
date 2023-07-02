@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blogs.Application", "Blog.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blogs", "Blogs\Blogs.csproj", "{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogs.AzureFunction", "Blogs.AzureFunction\Blogs.AzureFunction.csproj", "{4B25BB27-173A-44B3-B4E7-878C5F689D97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogs.AzureApi", "Blogs.AzureApi\Blogs.AzureApi.csproj", "{96AF60FD-7315-49B9-A549-13023A7D0B1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B25BB27-173A-44B3-B4E7-878C5F689D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B25BB27-173A-44B3-B4E7-878C5F689D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B25BB27-173A-44B3-B4E7-878C5F689D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B25BB27-173A-44B3-B4E7-878C5F689D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96AF60FD-7315-49B9-A549-13023A7D0B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96AF60FD-7315-49B9-A549-13023A7D0B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96AF60FD-7315-49B9-A549-13023A7D0B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96AF60FD-7315-49B9-A549-13023A7D0B1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
