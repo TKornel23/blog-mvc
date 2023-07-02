@@ -30,6 +30,14 @@ public class BlogController : Controller
         return View(model);
     }
 
+    [HttpGet("tag")]
+    public ActionResult<IEnumerable<Tag>> ReturnTagsForBlog([FromQuery] string blogId)
+    {
+        var tags = this._unitOfWork.TagRepository.Get(x => x.BlogId == blogId);
+
+        return Ok(tags);
+    }
+
     [Authorize]
     [HttpGet]
     public IActionResult DeleteBlog(string blogId)
