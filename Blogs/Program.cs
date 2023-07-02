@@ -1,4 +1,5 @@
 using Blogs;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +40,7 @@ builder.Services.AddScoped<GenericRepository<Tag>>();
 builder.Services.AddScoped<GenericRepository<Comment>>();
 builder.Services.AddScoped<GenericRepository<Blog.Persistence.Blog>>();
 builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 var app = builder.Build();
 
