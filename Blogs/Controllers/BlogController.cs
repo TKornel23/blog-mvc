@@ -1,4 +1,8 @@
-﻿namespace Blogs;
+﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using System.Text;
+
+namespace Blogs;
 
 public class BlogController : Controller
 {
@@ -9,11 +13,12 @@ public class BlogController : Controller
     public BlogController(
         UserManager<SiteUser> userManager,
         IUnitOfWork unitOfWork,
-        IBlogService blogService)
+        IBlogService blogService
+        )
     {
         this._userManager = userManager;
         _unitOfWork = unitOfWork;
-        this.blogService = blogService;
+        this.blogService = blogService;       
     }
 
     [Authorize]

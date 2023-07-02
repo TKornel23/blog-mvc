@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Blogs.AzureFunction": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7251",
+      "launchBrowser": false
+    }
+  }
+}

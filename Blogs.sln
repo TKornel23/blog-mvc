@@ -5,9 +5,11 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blogs.Persistence", "Blob.Persistence\Blogs.Persistence.csproj", "{6FF73BAF-2034-4232-8C70-B4A97775129D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogs.Application", "Blog.Application\Blogs.Application.csproj", "{BEEA9E44-6E70-459C-8A3F-7FFD5E954E51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blogs.Application", "Blog.Application\Blogs.Application.csproj", "{BEEA9E44-6E70-459C-8A3F-7FFD5E954E51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogs", "Blogs\Blogs.csproj", "{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blogs", "Blogs\Blogs.csproj", "{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blogs.AzureFunction", "Blogs.AzureFunction\Blogs.AzureFunction.csproj", "{4B25BB27-173A-44B3-B4E7-878C5F689D97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41B9263B-B15F-48E8-839F-DBFC1CEA49B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B25BB27-173A-44B3-B4E7-878C5F689D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B25BB27-173A-44B3-B4E7-878C5F689D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B25BB27-173A-44B3-B4E7-878C5F689D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B25BB27-173A-44B3-B4E7-878C5F689D97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

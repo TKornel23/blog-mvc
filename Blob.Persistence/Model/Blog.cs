@@ -15,4 +15,5 @@ public class Blog : Entity
     [Required]
     public string BlogText { get; set; } = null!;
     public int Likes { get; set; }
+    public string? BlobUrl { get; set; }
 }
