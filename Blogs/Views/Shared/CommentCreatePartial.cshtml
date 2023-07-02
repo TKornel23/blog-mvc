@@ -1,4 +1,5 @@
 ﻿@model Blog.Persistence.Comment
+@inject UserManager<SiteUser> userManager
 
 @using (Html.BeginForm("CreateAsync", "Comment", FormMethod.Post))
 {
@@ -8,13 +9,13 @@
                 @Model.Owner.Email
             </h6>
         </div>
+        @Html.ValidationMessageFor(x => x.CommentSection)
         <div class="form-group mb-2 w-50">
-            <input class="w-100" type="text" placeholder="CommentSection" required name="CommentSection">
-            @Html.ValidationMessageFor(x => x.CommentSection)
-            @Html.HiddenFor(m => m.Owner)
-            @Html.HiddenFor(m => m.OwnerId)
+            <input class="w-100" type="text" placeholder="CommentSection" required name="CommentSection" maxlength="254" min="2">
             @Html.HiddenFor(m => m.Blog)
             @Html.HiddenFor(m => m.BlogId)
+            @Html.HiddenFor(m => m.Owner)
+            @Html.HiddenFor(m => m.OwnerId)
         </div>
         <div class="form-group">
             <input type="submit" value="Post comment" class="btn btn-primary">

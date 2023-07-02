@@ -56,7 +56,7 @@
             }
         }
     </dl>
-    @Html.Partial("CommentCreatePartial", new Blog.Persistence.Comment() { Blog = Model, BlogId = Model.Id, Owner = await this._userManager.GetUserAsync(this.User) })
+    @Html.Partial("CommentCreatePartial", new Blog.Persistence.Comment() { Blog = Model, BlogId = Model.Id, Owner = await this._userManager.GetUserAsync(this.User), OwnerId = (await this._userManager.GetUserAsync(this.User)).Id })
     <dl class="m-4">
         @foreach (var item in Model.Comments)
         {

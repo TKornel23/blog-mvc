@@ -4,11 +4,11 @@
 {
     <div class="w-100">
         <div class="form-group mb-2 w-50">
-            <input class="w-100" type="text" placeholder="Title" required name="Title">
+            <input class="w-100" type="text" placeholder="Title" required name="Title" min="2" maxlength="50">
             @Html.ValidationMessageFor(x => x.Title)
         </div>
         <div class="form-group mb-2 w-50">
-            <input class="w-100" type="text" placeholder="Blog text" required name="BlogText">
+            <input class="w-100" type="text" placeholder="Blog text" required name="BlogText" min="2">
             @Html.ValidationMessageFor(x => x.BlogText)
         </div>
         <div class="form-group">

@@ -23,9 +23,15 @@ public class CommentController : Controller
     [HttpPost("CreateAsync")]
     public async Task<IActionResult> CreateAsync(Comment comment)
     {
+        if (!ModelState.IsValid)
+        {
+            return RedirectToAction($"GetOne", "Blog", new { blogId = comment.BlogId });
+        }
+
         comment.Owner = await _userManager.GetUserAsync(this.User);
         comment.OwnerId = comment.Owner.Id;
         comment.Blog = _unitOfWork.BlogRepository.GetByID(comment.BlogId)!;
+
         this._unitOfWork.CommentRepository.Insert(comment);
 
         this._unitOfWork.Save();

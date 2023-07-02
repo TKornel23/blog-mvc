@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Blog.Persistence.Blog>
+﻿@model BlogIndexViewModel
 
 <div class="align-content-center">
-@Html.Partial("BlogCreatePartial", new Blog.Persistence.Blog())
+@Html.Partial("BlogCreatePartial", Model.Blog)
 
     <div class="mt-5">
-        @foreach (var blog in Model)
+        @foreach (var blog in Model.Blogs)
         {
             <a asp-action="GetOne" asp-controller="Blog" asp-route-blogId="@blog.Id" class="text-decoration-none text-black">
                 <div class="blog-item">

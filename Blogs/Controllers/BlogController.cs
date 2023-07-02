@@ -21,7 +21,13 @@ public class BlogController : Controller
     {
         var blogs = this.blogService.GetBlogsForMainPage();
 
-        return View(blogs);
+        var model = new BlogIndexViewModel()
+        {
+            Blogs = blogs,
+            Blog = new Blog.Persistence.Blog()
+        };
+        
+        return View(model);
     }
 
     [Authorize]
@@ -87,6 +93,19 @@ public class BlogController : Controller
     [HttpPost("Blog/CreateAsync")]
     public async Task<IActionResult> CreateAsync(Blog.Persistence.Blog blog)
     {
+        var blogs = this.blogService.GetBlogsForMainPage();
+
+        var model = new BlogIndexViewModel()
+        {
+            Blogs = blogs,
+            Blog = blog
+        };
+
+        if (!ModelState.IsValid)
+        {
+            return View("Index", model);
+        }
+
         var user = await this._userManager.GetUserAsync(this.User);
 
         blog.OwnerId = user.Id;
