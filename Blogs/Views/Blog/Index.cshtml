@@ -7,7 +7,7 @@
         @foreach (var blog in Model.Blogs)
         {
             <a asp-action="GetOne" asp-controller="Blog" asp-route-blogId="@blog.Id" class="text-decoration-none text-black">
-                <div class="blog-item">
+                <div class="blog-item overflow-hidden">
                     <h3>@blog.Title</h3>
                     <p class="w-75">@blog.BlogText</p>
                     <div class="d-flex flex-row justify-content-around">
